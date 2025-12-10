@@ -13,140 +13,213 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            color: #333;
-            line-height: 1.6;
+            background: #f5e6d3;
+            color: #3d2817;
+            line-height: 1.8;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(139, 69, 19, 0.03) 10px, rgba(139, 69, 19, 0.03) 20px);
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(to bottom, rgba(139, 69, 19, 0.9), rgba(101, 67, 33, 0.95)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23654321" width="100" height="100"/><circle cx="10" cy="10" r="2" fill="%23fff" opacity="0.1"/><circle cx="40" cy="30" r="1.5" fill="%23fff" opacity="0.1"/><circle cx="70" cy="20" r="2" fill="%23fff" opacity="0.1"/><circle cx="90" cy="50" r="1" fill="%23fff" opacity="0.1"/></svg>');
+            color: #fff8dc;
             text-align: center;
-            padding: 3rem 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 4rem 2rem 3rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-bottom: 5px solid #8b4513;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: repeating-linear-gradient(90deg, #d2691e 0px, #d2691e 20px, #8b4513 20px, #8b4513 40px);
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 3.5rem;
+            margin-bottom: 0.8rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #fff8dc;
         }
 
         .slogan {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-style: italic;
-            opacity: 0.95;
+            color: #ffd89b;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            margin-top: 0.5rem;
+        }
+
+        .main-image-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
         }
 
         .main-image {
             width: 100%;
-            max-width: 800px;
-            height: 400px;
-            margin: 2rem auto;
-            display: block;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            height: 450px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(61, 40, 23, 0.4);
+            border: 8px solid #8b4513;
+            background: linear-gradient(135deg, #d2691e 0%, #8b4513 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: white;
+            font-size: 1.8rem;
+            color: #fff8dc;
             text-align: center;
             padding: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-image::before {
+            content: '🍽️';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .main-image-text {
+            position: relative;
+            z-index: 1;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 2rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            color: #667eea;
-            margin: 3rem 0 2rem;
+            font-size: 3rem;
+            color: #654321;
+            margin: 3rem 0 1rem;
             position: relative;
+            font-weight: bold;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            margin: 1rem auto;
-            border-radius: 2px;
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #8b4513;
+            font-style: italic;
+            margin-bottom: 3rem;
         }
 
         .recipes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
             margin-top: 2rem;
         }
 
         .recipe-card {
-            background: white;
-            border-radius: 15px;
+            background: #fff8dc;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(61, 40, 23, 0.25);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            border: 4px solid #d2691e;
+            position: relative;
+        }
+
+        .recipe-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: repeating-linear-gradient(90deg, #8b4513 0px, #8b4513 10px, #d2691e 10px, #d2691e 20px);
         }
 
         .recipe-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(61, 40, 23, 0.4);
+            border-color: #8b4513;
         }
 
         .recipe-image {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+            height: 280px;
+            background: linear-gradient(135deg, #d2691e 0%, #8b4513 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+            color: #fff8dc;
+            font-size: 4rem;
             text-align: center;
             padding: 1rem;
+            position: relative;
+            border-bottom: 3px solid #8b4513;
+        }
+
+        .recipe-image::after {
+            content: 'Фото здесь';
+            position: absolute;
+            bottom: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 248, 220, 0.7);
+            font-family: Georgia, serif;
         }
 
         .recipe-info {
-            padding: 1.5rem;
+            padding: 2rem 1.5rem;
+            background: #fff8dc;
         }
 
         .recipe-name {
-            font-size: 1.5rem;
-            color: #667eea;
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            color: #654321;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+            text-align: center;
         }
 
         .recipe-description {
-            color: #666;
-            font-size: 0.95rem;
+            color: #8b4513;
+            font-size: 1rem;
+            text-align: center;
+            font-style: italic;
         }
 
         .recipe-detail {
             display: none;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            padding: 3rem 2rem;
+            background: #fff8dc;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(61, 40, 23, 0.3);
             margin: 2rem 0;
+            border: 6px solid #8b4513;
         }
 
         .recipe-detail.active {
             display: block;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.6s ease;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -155,50 +228,86 @@
         }
 
         .back-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
+            background: linear-gradient(135deg, #8b4513 0%, #654321 100%);
+            color: #fff8dc;
+            border: 3px solid #654321;
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
-            transition: transform 0.2s ease;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-family: Georgia, serif;
         }
 
         .back-button:hover {
+            background: linear-gradient(135deg, #654321 0%, #3d2817 100%);
             transform: scale(1.05);
         }
 
         .recipe-detail h2 {
-            color: #667eea;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            color: #654321;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 3px solid #d2691e;
+            padding-bottom: 1rem;
         }
 
         .recipe-detail-image {
             width: 100%;
-            max-width: 600px;
-            height: 400px;
+            max-width: 700px;
+            height: 450px;
             margin: 2rem auto;
-            display: block;
-            border-radius: 15px;
-            background: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 2rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #d2691e 0%, #8b4513 100%);
+            color: #fff8dc;
+            font-size: 3rem;
+            border: 6px solid #654321;
+            box-shadow: 0 8px 20px rgba(61, 40, 23, 0.4);
+            position: relative;
+        }
+
+        .recipe-detail-image::after {
+            content: 'Фото блюда здесь';
+            position: absolute;
+            bottom: 20px;
+            font-size: 1.1rem;
+            color: rgba(255, 248, 220, 0.8);
         }
 
         .ingredients, .instructions {
-            margin: 2rem 0;
+            margin: 3rem 0;
+            background: rgba(210, 105, 30, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 6px solid #8b4513;
         }
 
         .ingredients h3, .instructions h3 {
-            color: #764ba2;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            color: #654321;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ingredients h3::before {
+            content: '🥘';
+            font-size: 2rem;
+        }
+
+        .instructions h3::before {
+            content: '👩‍🍳';
+            font-size: 2rem;
         }
 
         .ingredients ul {
@@ -207,52 +316,128 @@
         }
 
         .ingredients li {
-            padding: 0.5rem 0;
-            padding-left: 2rem;
+            padding: 0.8rem 0;
+            padding-left: 3rem;
             position: relative;
+            font-size: 1.15rem;
+            color: #3d2817;
+            border-bottom: 1px dashed rgba(139, 69, 19, 0.3);
+        }
+
+        .ingredients li:last-child {
+            border-bottom: none;
         }
 
         .ingredients li::before {
-            content: '🥄';
+            content: '🌿';
             position: absolute;
             left: 0;
+            font-size: 1.5rem;
         }
 
         .instructions ol {
-            padding-left: 2rem;
+            padding-left: 2.5rem;
+            counter-reset: step-counter;
+            list-style: none;
         }
 
         .instructions li {
-            padding: 0.8rem 0;
-            font-size: 1.1rem;
+            padding: 1.2rem 0;
+            padding-left: 1rem;
+            font-size: 1.15rem;
+            color: #3d2817;
+            position: relative;
+            counter-increment: step-counter;
+            border-bottom: 1px dashed rgba(139, 69, 19, 0.3);
+        }
+
+        .instructions li:last-child {
+            border-bottom: none;
+        }
+
+        .instructions li::before {
+            content: "Шаг " counter(step-counter);
+            position: absolute;
+            left: -2.5rem;
+            top: 1.2rem;
+            background: #8b4513;
+            color: #fff8dc;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.7rem;
+            text-align: center;
+            padding: 0.3rem;
+            line-height: 1.2;
         }
 
         footer {
-            background: #333;
-            color: white;
+            background: linear-gradient(to top, rgba(61, 40, 23, 0.95), rgba(101, 67, 33, 0.9));
+            color: #fff8dc;
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            border-top: 5px solid #8b4513;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.2);
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .decorative-line {
+            width: 200px;
+            height: 3px;
+            background: repeating-linear-gradient(90deg, #8b4513 0px, #8b4513 15px, transparent 15px, transparent 30px);
+            margin: 2rem auto;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .recipes-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Бабушкины Рецепты</h1>
+        <div class="decorative-line"></div>
         <p class="slogan">Рецепты, проверенные временем и бабушкой.</p>
     </header>
 
-    <div class="container">
+    <div class="main-image-container">
         <div class="main-image">
-            Главное фото блога
-            <br><small style="font-size: 1rem;">(Замените на своё изображение)</small>
+            <div class="main-image-text">
+                🏡<br>
+                Главное фото<br>
+                <small style="font-size: 1rem;">(main-banner.jpg)</small>
+            </div>
         </div>
+    </div>
 
+    <div class="container">
         <div id="menuSection">
             <h2 class="section-title">Наши Рецепты</h2>
+            <p class="section-subtitle">Выберите блюдо, чтобы узнать секреты приготовления</p>
             <div class="recipes-grid">
                 <div class="recipe-card" onclick="showRecipe('borsch')">
-                    <div class="recipe-image">Борщ</div>
+                    <div class="recipe-image">
+                        🍲
+                    </div>
                     <div class="recipe-info">
                         <h3 class="recipe-name">Борщ по-бабушкиному</h3>
                         <p class="recipe-description">Классический украинский борщ с секретом бабушки</p>
@@ -260,7 +445,9 @@
                 </div>
 
                 <div class="recipe-card" onclick="showRecipe('pelmeni')">
-                    <div class="recipe-image">Пельмени</div>
+                    <div class="recipe-image">
+                        🥟
+                    </div>
                     <div class="recipe-info">
                         <h3 class="recipe-name">Домашние пельмени</h3>
                         <p class="recipe-description">Сочные пельмени с нежным тестом</p>
@@ -268,7 +455,9 @@
                 </div>
 
                 <div class="recipe-card" onclick="showRecipe('blini')">
-                    <div class="recipe-image">Блины</div>
+                    <div class="recipe-image">
+                        🥞
+                    </div>
                     <div class="recipe-info">
                         <h3 class="recipe-name">Тонкие блины</h3>
                         <p class="recipe-description">Ажурные блины на молоке</p>
@@ -276,7 +465,9 @@
                 </div>
 
                 <div class="recipe-card" onclick="showRecipe('salat')">
-                    <div class="recipe-image">Оливье</div>
+                    <div class="recipe-image">
+                        🥗
+                    </div>
                     <div class="recipe-info">
                         <h3 class="recipe-name">Салат Оливье</h3>
                         <p class="recipe-description">Праздничный салат по старому рецепту</p>
@@ -284,7 +475,9 @@
                 </div>
 
                 <div class="recipe-card" onclick="showRecipe('pirozhki')">
-                    <div class="recipe-image">Пирожки</div>
+                    <div class="recipe-image">
+                        🥖
+                    </div>
                     <div class="recipe-info">
                         <h3 class="recipe-name">Жареные пирожки</h3>
                         <p class="recipe-description">Пышные пирожки с разными начинками</p>
@@ -292,7 +485,9 @@
                 </div>
 
                 <div class="recipe-card" onclick="showRecipe('vareniki')">
-                    <div class="recipe-image">Вареники</div>
+                    <div class="recipe-image">
+                        🥮
+                    </div>
                     <div class="recipe-info">
                         <h3 class="recipe-name">Вареники с картошкой</h3>
                         <p class="recipe-description">Нежные вареники со сметаной</p>
@@ -304,7 +499,9 @@
         <div id="borsch" class="recipe-detail">
             <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
             <h2>Борщ по-бабушкиному</h2>
-            <div class="recipe-detail-image">Фото борща</div>
+            <div class="recipe-detail-image">
+                🍲
+            </div>
             
             <div class="ingredients">
                 <h3>Ингредиенты:</h3>
@@ -331,7 +528,7 @@
                     <li>Добавьте нашинкованную капусту, варите ещё 10 минут.</li>
                     <li>Положите обжаренные свёклу, морковь и лук. Варите 15 минут.</li>
                     <li>Добавьте соль, перец, лавровый лист и раздавленный чеснок. Дайте настояться 10-15 минут.</li>
-                    <li>Подавайте со сметаной и свежим хлебом!</li>
+                    <li>Подавайте со сметаной и свежим хлебом! Приятного аппетита!</li>
                 </ol>
             </div>
         </div>
@@ -339,7 +536,9 @@
         <div id="pelmeni" class="recipe-detail">
             <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
             <h2>Домашние пельмени</h2>
-            <div class="recipe-detail-image">Фото пельменей</div>
+            <div class="recipe-detail-image">
+                🥟
+            </div>
             
             <div class="ingredients">
                 <h3>Ингредиенты для теста:</h3>
@@ -349,7 +548,7 @@
                     <li>Вода — 200 мл</li>
                     <li>Соль — 1 ч.л.</li>
                 </ul>
-                <h3>Ингредиенты для начинки:</h3>
+                <h3 style="margin-top: 1.5rem;">Ингредиенты для начинки:</h3>
                 <ul>
                     <li>Говядина и свинина — по 300 г</li>
                     <li>Лук — 2 шт.</li>
@@ -360,12 +559,12 @@
             <div class="instructions">
                 <h3>Приготовление:</h3>
                 <ol>
-                    <li>Замесите тесто из муки, яиц, воды и соли. Тесто должно быть эластичным. Оставьте на 30 минут.</li>
+                    <li>Замесите тесто из муки, яиц, воды и соли. Тесто должно быть эластичным. Оставьте на 30 минут под полотенцем.</li>
                     <li>Мясо и лук пропустите через мясорубку. Посолите, поперчите, хорошо перемешайте.</li>
-                    <li>Раскатайте тесто тонким слоем (2-3 мм). Вырежьте кружочки стаканом.</li>
+                    <li>Раскатайте тесто тонким слоем (2-3 мм). Вырежьте кружочки стаканом диаметром около 8 см.</li>
                     <li>На каждый кружок положите чайную ложку фарша. Слепите края, формируя пельмени.</li>
                     <li>Вскипятите подсоленную воду. Опустите пельмени и варите 5-7 минут после всплытия.</li>
-                    <li>Подавайте с маслом, сметаной или бульоном!</li>
+                    <li>Подавайте с маслом, сметаной или бульоном! Приятного аппетита!</li>
                 </ol>
             </div>
         </div>
@@ -373,7 +572,9 @@
         <div id="blini" class="recipe-detail">
             <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
             <h2>Тонкие блины</h2>
-            <div class="recipe-detail-image">Фото блинов</div>
+            <div class="recipe-detail-image">
+                🥞
+            </div>
             
             <div class="ingredients">
                 <h3>Ингредиенты:</h3>
@@ -390,13 +591,13 @@
             <div class="instructions">
                 <h3>Приготовление:</h3>
                 <ol>
-                    <li>Взбейте яйца с сахаром и солью.</li>
-                    <li>Добавьте половину молока, перемешайте.</li>
-                    <li>Постепенно всыпьте муку, размешивая до однородности.</li>
+                    <li>Взбейте яйца с сахаром и солью до однородности.</li>
+                    <li>Добавьте половину молока, хорошо перемешайте.</li>
+                    <li>Постепенно всыпьте муку, размешивая венчиком до однородности без комочков.</li>
                     <li>Влейте оставшееся молоко и растительное масло. Тесто должно быть как жидкая сметана.</li>
-                    <li>Разогрейте сковороду, смажьте маслом. Налейте тонким слоем тесто.</li>
+                    <li>Разогрейте сковороду, смажьте маслом. Налейте тонким слоем тесто и равномерно распределите.</li>
                     <li>Жарьте с каждой стороны по 30-40 секунд до золотистого цвета.</li>
-                    <li>Подавайте с мёдом, сгущёнкой, сметаной или красной икрой!</li>
+                    <li>Подавайте с мёдом, сгущёнкой, сметаной или красной икрой! Приятного аппетита!</li>
                 </ol>
             </div>
         </div>
@@ -404,7 +605,9 @@
         <div id="salat" class="recipe-detail">
             <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
             <h2>Салат Оливье</h2>
-            <div class="recipe-detail-image">Фото Оливье</div>
+            <div class="recipe-detail-image">
+                🥗
+            </div>
             
             <div class="ingredients">
                 <h3>Ингредиенты:</h3>
@@ -423,13 +626,13 @@
             <div class="instructions">
                 <h3>Приготовление:</h3>
                 <ol>
-                    <li>Картофель и морковь отварите в мундире, остудите и нарежьте мелкими кубиками.</li>
-                    <li>Яйца сварите вкрутую, остудите и нарежьте кубиками.</li>
-                    <li>Огурцы и колбасу нарежьте мелкими кубиками.</li>
-                    <li>Смешайте все ингредиенты в большой миске.</li>
-                    <li>Добавьте зелёный горошек (предварительно слив жидкость).</li>
-                    <li>Заправьте майонезом, посолите и поперчите по вкусу.</li>
-                    <li>Перемешайте и дайте настояться в холодильнике 1-2 часа перед подачей!</li>
+                    <li>Картофель и морковь отварите в мундире до готовности, остудите и нарежьте мелкими кубиками.</li>
+                    <li>Яйца сварите вкрутую (10 минут после закипания), остудите и нарежьте кубиками.</li>
+                    <li>Огурцы и колбасу нарежьте мелкими кубиками такого же размера.</li>
+                    <li>Смешайте все нарезанные ингредиенты в большой миске.</li>
+                    <li>Добавьте зелёный горошек (предварительно слив жидкость из банки).</li>
+                    <li>Заправьте майонезом, посолите и поперчите по вкусу. Аккуратно перемешайте.</li>
+                    <li>Дайте настояться в холодильнике 1-2 часа перед подачей! Приятного аппетита!</li>
                 </ol>
             </div>
         </div>
@@ -437,7 +640,9 @@
         <div id="pirozhki" class="recipe-detail">
             <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
             <h2>Жареные пирожки</h2>
-            <div class="recipe-detail-image">Фото пирожков</div>
+            <div class="recipe-detail-image">
+                🥖
+            </div>
             
             <div class="ingredients">
                 <h3>Ингредиенты:</h3>
@@ -456,14 +661,14 @@
             <div class="instructions">
                 <h3>Приготовление:</h3>
                 <ol>
-                    <li>Подогрейте молоко, растворите в нём сахар и дрожжи. Оставьте на 10 минут.</li>
-                    <li>Добавьте яйцо, соль, масло и половину муки. Перемешайте.</li>
-                    <li>Постепенно добавьте оставшуюся муку, замесите мягкое тесто.</li>
-                    <li>Накройте и оставьте в тёплом месте на 1 час до увеличения в 2 раза.</li>
-                    <li>Разделите тесто на небольшие кусочки, раскатайте каждый в лепёшку.</li>
-                    <li>Положите начинку, защипните края, формируя пирожок.</li>
-                    <li>Жарьте на сковороде с маслом до золотистого цвета с обеих сторон.</li>
-                    <li>Выложите на бумажное полотенце, чтобы убрать лишнее масло. Подавайте тёплыми!</li>
+                    <li>Подогрейте молоко до тёплого состояния, растворите в нём сахар и дрожжи. Оставьте на 10 минут.</li>
+                    <li>Добавьте яйцо, соль, масло и половину муки. Хорошо перемешайте.</li>
+                    <li>Постепенно добавьте оставшуюся муку, замесите мягкое эластичное тесто.</li>
+                    <li>Накройте полотенцем и оставьте в тёплом месте на 1 час до увеличения в 2 раза.</li>
+                    <li>Разделите тесто на небольшие кусочки (размером с куриное яйцо), раскатайте каждый в лепёшку.</li>
+                    <li>Положите начинку в центр, защипните края, формируя пирожок овальной формы.</li>
+                    <li>Жарьте на сковороде с достаточным количеством масла до золотистого цвета с обеих сторон.</li>
+                    <li>Выложите на бумажное полотенце, чтобы убрать лишнее масло. Подавайте тёплыми! Приятного аппетита!</li>
                 </ol>
             </div>
         </div>
@@ -471,61 +676,13 @@
         <div id="vareniki" class="recipe-detail">
             <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
             <h2>Вареники с картошкой</h2>
-            <div class="recipe-detail-image">Фото вареников</div>
+            <div class="recipe-detail-image">
+                🥮
+            </div>
             
             <div class="ingredients">
                 <h3>Ингредиенты для теста:</h3>
                 <ul>
                     <li>Мука — 400 г</li>
                     <li>Вода — 200 мл</li>
-                    <li>Яйцо — 1 шт.</li>
-                    <li>Соль — 0,5 ч.л.</li>
-                </ul>
-                <h3>Ингредиенты для начинки:</h3>
-                <ul>
-                    <li>Картофель — 6 шт.</li>
-                    <li>Лук — 2 шт.</li>
-                    <li>Сливочное масло — 50 г</li>
-                    <li>Соль, перец по вкусу</li>
-                </ul>
-            </div>
-
-            <div class="instructions">
-                <h3>Приготовление:</h3>
-                <ol>
-                    <li>Замесите тесто из муки, воды, яйца и соли. Оно должно быть мягким. Оставьте на 20 минут.</li>
-                    <li>Картофель отварите и разомните в пюре. Лук обжарьте и добавьте в пюре вместе с маслом.</li>
-                    <li>Раскатайте тесто тонко, вырежьте кружочки стаканом.</li>
-                    <li>На каждый кружок положите ложку начинки, сложите пополам и защипните края.</li>
-                    <li>Вскипятите подсоленную воду, опустите вареники.</li>
-                    <li>Варите 3-5 минут после всплытия.</li>
-                    <li>Подавайте со сметаной и жареным луком!</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Бабушкины Рецепты. Вкус, проверенный поколениями.</p>
-    </footer>
-
-    <script>
-        function showRecipe(recipeId) {
-            document.getElementById('menuSection').style.display = 'none';
-            document.querySelectorAll('.recipe-detail').forEach(detail => {
-                detail.classList.remove('active');
-            });
-            document.getElementById(recipeId).classList.add('active');
-            window.scrollTo(0, 0);
-        }
-
-        function showMenu() {
-            document.getElementById('menuSection').style.display = 'block';
-            document.querySelectorAll('.recipe-detail').forEach(detail => {
-                detail.classList.remove('active');
-            });
-            window.scrollTo(0, 0);
-        }
-    </script>
-</body>
-</html>
+                    <li
