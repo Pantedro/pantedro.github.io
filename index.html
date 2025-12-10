@@ -1,176 +1,531 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Бабушкины Рецепты</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бабушкины Рецепты</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-    body {
-        margin: 0;
-        font-family: "Georgia", serif;
-        background: #faf5ef;
-        color: #333;
-    }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            color: #333;
+            line-height: 1.6;
+        }
 
-    header {
-        text-align: center;
-        padding: 40px 20px;
-        background: #f3e6d4;
-        border-bottom: 4px solid #d3b894;
-    }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-    header h1 {
-        font-size: 42px;
-        margin-bottom: 5px;
-    }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
-    header p {
-        font-size: 18px;
-        color: #7a5d3b;
-        margin-top: 0;
-    }
+        .slogan {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.95;
+        }
 
-    /* Grid Menu */
-    .menu {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        padding: 30px;
-        max-width: 1200px;
-        margin: auto;
-    }
+        .main-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
 
-    .item {
-        background: white;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        text-align: center;
-        transition: 0.3s;
-        cursor: pointer;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
 
-    .item:hover {
-        transform: scale(1.03);
-    }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #667eea;
+            margin: 3rem 0 2rem;
+            position: relative;
+        }
 
-    .item img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
 
-    .item h3 {
-        margin: 15px 0;
-        font-size: 20px;
-    }
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
 
-    /* Recipe sections */
-    .recipe {
-        max-width: 900px;
-        margin: 60px auto;
-        padding: 20px;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
+        .recipe-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
 
-    .recipe h2 {
-        text-align: center;
-        margin-bottom: 10px;
-    }
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
 
-    .recipe img {
-        width: 100%;
-        border-radius: 10px;
-        margin-bottom: 20px;
-    }
+        .recipe-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 1rem;
+        }
 
-    .back {
-        text-align: center;
-        margin-top: 10px;
-    }
+        .recipe-info {
+            padding: 1.5rem;
+        }
 
-    .back a {
-        color: #7a5d3b;
-        text-decoration: none;
-        font-weight: bold;
-    }
-</style>
+        .recipe-name {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .recipe-description {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .recipe-detail {
+            display: none;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            margin: 2rem 0;
+        }
+
+        .recipe-detail.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+
+        .recipe-detail h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .recipe-detail-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .ingredients, .instructions {
+            margin: 2rem 0;
+        }
+
+        .ingredients h3, .instructions h3 {
+            color: #764ba2;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .ingredients ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .ingredients li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .ingredients li::before {
+            content: '🥄';
+            position: absolute;
+            left: 0;
+        }
+
+        .instructions ol {
+            padding-left: 2rem;
+        }
+
+        .instructions li {
+            padding: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Бабушкины Рецепты</h1>
+        <p class="slogan">Рецепты, проверенные временем и бабушкой.</p>
+    </header>
 
-<header>
-    <h1>Бабушкины Рецепты</h1>
-    <p>Рецепты, проверенные временем и бабушкой.</p>
-</header>
+    <div class="container">
+        <div class="main-image">
+            Главное фото блога
+            <br><small style="font-size: 1rem;">(Замените на своё изображение)</small>
+        </div>
 
-<!-- MENU GRID -->
-<div class="menu">
-    <a href="#recipe1" class="item">
-        <img src="IMAGE1.jpg" alt="Блюдо 1">
-        <h3>Название блюда 1</h3>
-    </a>
+        <div id="menuSection">
+            <h2 class="section-title">Наши Рецепты</h2>
+            <div class="recipes-grid">
+                <div class="recipe-card" onclick="showRecipe('borsch')">
+                    <div class="recipe-image">Борщ</div>
+                    <div class="recipe-info">
+                        <h3 class="recipe-name">Борщ по-бабушкиному</h3>
+                        <p class="recipe-description">Классический украинский борщ с секретом бабушки</p>
+                    </div>
+                </div>
 
-    <a href="#recipe2" class="item">
-        <img src="IMAGE2.jpg" alt="Блюдо 2">
-        <h3>Название блюда 2</h3>
-    </a>
+                <div class="recipe-card" onclick="showRecipe('pelmeni')">
+                    <div class="recipe-image">Пельмени</div>
+                    <div class="recipe-info">
+                        <h3 class="recipe-name">Домашние пельмени</h3>
+                        <p class="recipe-description">Сочные пельмени с нежным тестом</p>
+                    </div>
+                </div>
 
-    <a href="#recipe3" class="item">
-        <img src="IMAGE3.jpg" alt="Блюдо 3">
-        <h3>Название блюда 3</h3>
-    </a>
-</div>
+                <div class="recipe-card" onclick="showRecipe('blini')">
+                    <div class="recipe-image">Блины</div>
+                    <div class="recipe-info">
+                        <h3 class="recipe-name">Тонкие блины</h3>
+                        <p class="recipe-description">Ажурные блины на молоке</p>
+                    </div>
+                </div>
 
-<!-- RECIPE SECTIONS -->
+                <div class="recipe-card" onclick="showRecipe('salat')">
+                    <div class="recipe-image">Оливье</div>
+                    <div class="recipe-info">
+                        <h3 class="recipe-name">Салат Оливье</h3>
+                        <p class="recipe-description">Праздничный салат по старому рецепту</p>
+                    </div>
+                </div>
 
-<div class="recipe" id="recipe1">
-    <h2>Название блюда 1</h2>
-    <img src="IMAGE1.jpg">
-    <h3>Ингредиенты:</h3>
-    <ul>
-        <li>Пункт 1</li>
-        <li>Пункт 2</li>
-        <li>Пункт 3</li>
-    </ul>
+                <div class="recipe-card" onclick="showRecipe('pirozhki')">
+                    <div class="recipe-image">Пирожки</div>
+                    <div class="recipe-info">
+                        <h3 class="recipe-name">Жареные пирожки</h3>
+                        <p class="recipe-description">Пышные пирожки с разными начинками</p>
+                    </div>
+                </div>
 
-    <h3>Приготовление:</h3>
-    <ol>
-        <li>Шаг 1…</li>
-        <li>Шаг 2…</li>
-        <li>Шаг 3…</li>
-    </ol>
+                <div class="recipe-card" onclick="showRecipe('vareniki')">
+                    <div class="recipe-image">Вареники</div>
+                    <div class="recipe-info">
+                        <h3 class="recipe-name">Вареники с картошкой</h3>
+                        <p class="recipe-description">Нежные вареники со сметаной</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="back"><a href="#top">← Назад к меню</a></div>
-</div>
+        <div id="borsch" class="recipe-detail">
+            <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
+            <h2>Борщ по-бабушкиному</h2>
+            <div class="recipe-detail-image">Фото борща</div>
+            
+            <div class="ingredients">
+                <h3>Ингредиенты:</h3>
+                <ul>
+                    <li>Свёкла — 2 шт.</li>
+                    <li>Капуста — 300 г</li>
+                    <li>Картофель — 4 шт.</li>
+                    <li>Морковь — 1 шт.</li>
+                    <li>Лук — 1 шт.</li>
+                    <li>Томатная паста — 2 ст.л.</li>
+                    <li>Мясо (говядина или свинина) — 500 г</li>
+                    <li>Чеснок — 3 зубчика</li>
+                    <li>Соль, перец, лавровый лист</li>
+                </ul>
+            </div>
 
+            <div class="instructions">
+                <h3>Приготовление:</h3>
+                <ol>
+                    <li>Сварите мясной бульон. Мясо залейте холодной водой, доведите до кипения и варите 1,5-2 часа на медленном огне.</li>
+                    <li>Свёклу натрите на крупной тёрке или нарежьте соломкой. Обжарьте на сковороде с добавлением уксуса и томатной пасты.</li>
+                    <li>Морковь и лук мелко нарежьте и обжарьте на отдельной сковороде до золотистого цвета.</li>
+                    <li>В кипящий бульон добавьте нарезанный картофель. Варите 10 минут.</li>
+                    <li>Добавьте нашинкованную капусту, варите ещё 10 минут.</li>
+                    <li>Положите обжаренные свёклу, морковь и лук. Варите 15 минут.</li>
+                    <li>Добавьте соль, перец, лавровый лист и раздавленный чеснок. Дайте настояться 10-15 минут.</li>
+                    <li>Подавайте со сметаной и свежим хлебом!</li>
+                </ol>
+            </div>
+        </div>
 
-<div class="recipe" id="recipe2">
-    <h2>Название блюда 2</h2>
-    <img src="IMAGE2.jpg">
-    <h3>Ингредиенты:</h3>
-    <ul><li>…</li></ul>
+        <div id="pelmeni" class="recipe-detail">
+            <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
+            <h2>Домашние пельмени</h2>
+            <div class="recipe-detail-image">Фото пельменей</div>
+            
+            <div class="ingredients">
+                <h3>Ингредиенты для теста:</h3>
+                <ul>
+                    <li>Мука — 500 г</li>
+                    <li>Яйцо — 2 шт.</li>
+                    <li>Вода — 200 мл</li>
+                    <li>Соль — 1 ч.л.</li>
+                </ul>
+                <h3>Ингредиенты для начинки:</h3>
+                <ul>
+                    <li>Говядина и свинина — по 300 г</li>
+                    <li>Лук — 2 шт.</li>
+                    <li>Соль, перец по вкусу</li>
+                </ul>
+            </div>
 
-    <h3>Приготовление:</h3>
-    <ol><li>…</li></ol>
+            <div class="instructions">
+                <h3>Приготовление:</h3>
+                <ol>
+                    <li>Замесите тесто из муки, яиц, воды и соли. Тесто должно быть эластичным. Оставьте на 30 минут.</li>
+                    <li>Мясо и лук пропустите через мясорубку. Посолите, поперчите, хорошо перемешайте.</li>
+                    <li>Раскатайте тесто тонким слоем (2-3 мм). Вырежьте кружочки стаканом.</li>
+                    <li>На каждый кружок положите чайную ложку фарша. Слепите края, формируя пельмени.</li>
+                    <li>Вскипятите подсоленную воду. Опустите пельмени и варите 5-7 минут после всплытия.</li>
+                    <li>Подавайте с маслом, сметаной или бульоном!</li>
+                </ol>
+            </div>
+        </div>
 
-    <div class="back"><a href="#top">← Назад к меню</a></div>
-</div>
+        <div id="blini" class="recipe-detail">
+            <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
+            <h2>Тонкие блины</h2>
+            <div class="recipe-detail-image">Фото блинов</div>
+            
+            <div class="ingredients">
+                <h3>Ингредиенты:</h3>
+                <ul>
+                    <li>Молоко — 500 мл</li>
+                    <li>Яйца — 3 шт.</li>
+                    <li>Мука — 250 г</li>
+                    <li>Сахар — 2 ст.л.</li>
+                    <li>Соль — щепотка</li>
+                    <li>Растительное масло — 3 ст.л.</li>
+                </ul>
+            </div>
 
+            <div class="instructions">
+                <h3>Приготовление:</h3>
+                <ol>
+                    <li>Взбейте яйца с сахаром и солью.</li>
+                    <li>Добавьте половину молока, перемешайте.</li>
+                    <li>Постепенно всыпьте муку, размешивая до однородности.</li>
+                    <li>Влейте оставшееся молоко и растительное масло. Тесто должно быть как жидкая сметана.</li>
+                    <li>Разогрейте сковороду, смажьте маслом. Налейте тонким слоем тесто.</li>
+                    <li>Жарьте с каждой стороны по 30-40 секунд до золотистого цвета.</li>
+                    <li>Подавайте с мёдом, сгущёнкой, сметаной или красной икрой!</li>
+                </ol>
+            </div>
+        </div>
 
-<div class="recipe" id="recipe3">
-    <h2>Название блюда 3</h2>
-    <img src="IMAGE3.jpg">
-    <h3>Ингредиенты:</h3>
-    <ul><li>…</li></ul>
+        <div id="salat" class="recipe-detail">
+            <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
+            <h2>Салат Оливье</h2>
+            <div class="recipe-detail-image">Фото Оливье</div>
+            
+            <div class="ingredients">
+                <h3>Ингредиенты:</h3>
+                <ul>
+                    <li>Картофель — 4 шт.</li>
+                    <li>Морковь — 2 шт.</li>
+                    <li>Яйца — 4 шт.</li>
+                    <li>Огурцы солёные — 4 шт.</li>
+                    <li>Зелёный горошек — 1 банка</li>
+                    <li>Колбаса варёная — 300 г</li>
+                    <li>Майонез — по вкусу</li>
+                    <li>Соль, перец</li>
+                </ul>
+            </div>
 
-    <h3>Приготовление:</h3>
-    <ol><li>…</li></ol>
+            <div class="instructions">
+                <h3>Приготовление:</h3>
+                <ol>
+                    <li>Картофель и морковь отварите в мундире, остудите и нарежьте мелкими кубиками.</li>
+                    <li>Яйца сварите вкрутую, остудите и нарежьте кубиками.</li>
+                    <li>Огурцы и колбасу нарежьте мелкими кубиками.</li>
+                    <li>Смешайте все ингредиенты в большой миске.</li>
+                    <li>Добавьте зелёный горошек (предварительно слив жидкость).</li>
+                    <li>Заправьте майонезом, посолите и поперчите по вкусу.</li>
+                    <li>Перемешайте и дайте настояться в холодильнике 1-2 часа перед подачей!</li>
+                </ol>
+            </div>
+        </div>
 
-    <div class="back"><a href="#top">← Назад к меню</a></div>
-</div>
+        <div id="pirozhki" class="recipe-detail">
+            <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
+            <h2>Жареные пирожки</h2>
+            <div class="recipe-detail-image">Фото пирожков</div>
+            
+            <div class="ingredients">
+                <h3>Ингредиенты:</h3>
+                <ul>
+                    <li>Мука — 500 г</li>
+                    <li>Молоко — 250 мл</li>
+                    <li>Дрожжи сухие — 7 г</li>
+                    <li>Сахар — 2 ст.л.</li>
+                    <li>Соль — 1 ч.л.</li>
+                    <li>Яйцо — 1 шт.</li>
+                    <li>Растительное масло — 3 ст.л. + для жарки</li>
+                    <li>Начинка (капуста, картофель, мясо или повидло)</li>
+                </ul>
+            </div>
 
+            <div class="instructions">
+                <h3>Приготовление:</h3>
+                <ol>
+                    <li>Подогрейте молоко, растворите в нём сахар и дрожжи. Оставьте на 10 минут.</li>
+                    <li>Добавьте яйцо, соль, масло и половину муки. Перемешайте.</li>
+                    <li>Постепенно добавьте оставшуюся муку, замесите мягкое тесто.</li>
+                    <li>Накройте и оставьте в тёплом месте на 1 час до увеличения в 2 раза.</li>
+                    <li>Разделите тесто на небольшие кусочки, раскатайте каждый в лепёшку.</li>
+                    <li>Положите начинку, защипните края, формируя пирожок.</li>
+                    <li>Жарьте на сковороде с маслом до золотистого цвета с обеих сторон.</li>
+                    <li>Выложите на бумажное полотенце, чтобы убрать лишнее масло. Подавайте тёплыми!</li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="vareniki" class="recipe-detail">
+            <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
+            <h2>Вареники с картошкой</h2>
+            <div class="recipe-detail-image">Фото вареников</div>
+            
+            <div class="ingredients">
+                <h3>Ингредиенты для теста:</h3>
+                <ul>
+                    <li>Мука — 400 г</li>
+                    <li>Вода — 200 мл</li>
+                    <li>Яйцо — 1 шт.</li>
+                    <li>Соль — 0,5 ч.л.</li>
+                </ul>
+                <h3>Ингредиенты для начинки:</h3>
+                <ul>
+                    <li>Картофель — 6 шт.</li>
+                    <li>Лук — 2 шт.</li>
+                    <li>Сливочное масло — 50 г</li>
+                    <li>Соль, перец по вкусу</li>
+                </ul>
+            </div>
+
+            <div class="instructions">
+                <h3>Приготовление:</h3>
+                <ol>
+                    <li>Замесите тесто из муки, воды, яйца и соли. Оно должно быть мягким. Оставьте на 20 минут.</li>
+                    <li>Картофель отварите и разомните в пюре. Лук обжарьте и добавьте в пюре вместе с маслом.</li>
+                    <li>Раскатайте тесто тонко, вырежьте кружочки стаканом.</li>
+                    <li>На каждый кружок положите ложку начинки, сложите пополам и защипните края.</li>
+                    <li>Вскипятите подсоленную воду, опустите вареники.</li>
+                    <li>Варите 3-5 минут после всплытия.</li>
+                    <li>Подавайте со сметаной и жареным луком!</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Бабушкины Рецепты. Вкус, проверенный поколениями.</p>
+    </footer>
+
+    <script>
+        function showRecipe(recipeId) {
+            document.getElementById('menuSection').style.display = 'none';
+            document.querySelectorAll('.recipe-detail').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            document.getElementById(recipeId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function showMenu() {
+            document.getElementById('menuSection').style.display = 'block';
+            document.querySelectorAll('.recipe-detail').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
