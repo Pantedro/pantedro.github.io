@@ -175,16 +175,11 @@
         }
 
         .recipe-detail-image {
-            max-width: 700px;
-            height: 450px;
+            max-width: 100%;
+            width: 100%;
+            height: auto;
             margin: 3rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #c19a6b 0%, #a0826d 100%);
-            color: #fff;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            display: block;
             border: 4px solid #8b4513;
             box-shadow: 0 0 0 8px #d4af37;
         }
@@ -310,7 +305,7 @@
     <div id="kotleta222" class="recipe-detail">
         <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
         <h2>Котлеты 2 2 2</h2>
-        <div class="recipe-image"><img src="images/kotleta222.jpeg" alt="Котлеты222" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+        <img class="recipe-detail-image" src="images/kotleta222.jpeg" alt="Котлеты222">
 
 
         <div class="ingredients">
@@ -342,7 +337,7 @@
     <div id="kuritzapoevreiski" class="recipe-detail">
         <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
         <h2>Курица по Еврейски</h2>
-        <div class="recipe-image"><img src="images/KuritzaPoEvreiski.jpg" alt="Курица по Еврейски" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+        <img class="recipe-detail-image" src="images/KuritzaPoEvreiski.jpg" alt="Курица по Еврейски">
 
         <div class="ingredients">
             <h3>Ингредиенты:</h3>
