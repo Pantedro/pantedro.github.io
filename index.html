@@ -245,7 +245,7 @@
                 <div class="recipe-image"><img src="images/KuritzaPoEvreiski.jpg" alt="Курица по Еврейски" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
                 <div class="recipe-info">
                     <h3 class="recipe-name">Курица по Еврейски</h3>
-                    <p class="recipe-price">★ Магия при готовки ★</p>
+                    <p class="recipe-price">★ Магия при приготовлении! ★</p>
                     <p class="recipe-description">Быстро и вкусно</p>
                 </div>
             </div>
@@ -260,11 +260,20 @@
             </div>
 
             <div class="recipe-card" onclick="showRecipe('gribnoysoup')">
-                <div class="recipe-image">Грибной суп</div>
+                <div class="recipe-image"><img src="images/GribnoySoup.jpeg" alt="Суп с Грибами" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
                 <div class="recipe-info">
-                    <h3 class="recipe-name">Суп с Грибами</h3>
+                    <h3 class="recipe-name">Грибной Суп</h3>
                     <p class="recipe-price">★ Зимний Деликатес ★</p>
                     <p class="recipe-description">Насыщенный и вкусный</p>
+                </div>
+            </div>
+
+            <div class="recipe-card" onclick="showRecipe('pashtet')">
+                <div class="recipe-image"><img src="images/Pashtet.jpeg" alt="Паштет из куриной печени" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+                <div class="recipe-info">
+                    <h3 class="recipe-name">Паштет из куриной печени</h3>
+                    <p class="recipe-price">★ Деликатес по Французски ★</p>
+                    <p class="recipe-description">Мягкий и насыщенный вкус</p>
                 </div>
             </div>
 
@@ -430,10 +439,49 @@
             </ol>
         </div>
     </div>
+
+    <!-- PASHTET -->
+    <div id="pashtet" class="recipe-detail">
+        <button class="back-button" onclick="showMenu()">← Вернуться к меню</button>
+        <h2>Паштет из куриной печени</h2>
+        <img class="recipe-detail-image" src="images/pashtet.jpeg" alt="Паштет из куриной печени">
+
+        <div class="ingredients">
+            <h3>Ингредиенты:</h3>
+            <ul>
+                <li>Куриная печень 1 кг</li>
+                <li>Большая луковица 1</li>
+                <li>Большая морковь 1</li>
+                <li>100/150 г сливочного масла</li>
+                <li>1/2 чайной ложки мускатного ореха</li>
+                <li>1/2 чайной ложки черного перца</li>
+                <li>Cоль по вкусу</li>
+            </ul>
+        </div>
+
+        <div class="instructions">
+            <h3>Приготовление:</h3>
+            <ol>
+                <li>Замочите печень в воде, чтобы удалить кровь.</li>
+                <li>Промойте в дуршлаге и дайте воде стечь.</li>
+                <li>Очистите печень от пленок </li>
+                <li>Разрежьте пополам.</li>
+                <li>Нарежьте лук полукольцами.</li>
+                <li>Положите лук и морковь на разогретую с маслом сковороду, поджарить  Можно добавлять немного воды , чтобы быстрее протушилось  </li>
+                <li>Добавьте печенку и перемешайте.</li>
+                <li>Посыпьте всеми специями и ещё раз перемешайте.</li>
+                <li>Тушим все вместе до  готовности печенки буквально несколько минут. Можно под крышкой</li>
+                <li>Вылодите готовую смесь в чашу блендера, добавьте сливочное масло и взбейте до однородной массы</li>
+                <li>Попробуйте на вкус и добавьте недостающие ингредиенты.</li>
+                <li>При желании, если паштет получается  суховатый , можно добавить жидкость из сковородки , которая выделялась при тушении</li>
+                <li>Приятного аппетита!</li>
+            </ol>
+        </div>
+    </div>
 </div>
 
 <footer>
-    <p>&copy; 2024 Бабушкины Рецепты. Вкус, проверенный поколениями.</p>
+    <p>&copy; 2025 Бабушкины Рецепты. Вкус, проверенный поколениями.</p>
 </footer>
 
 <script>
